@@ -1,0 +1,20 @@
+; ============================================================================
+;  Granja - configuracao de conexao
+;
+;  Copie este arquivo para a pasta do executavel como "Granja.ini" e ajuste
+;  os valores conforme o seu ambiente.
+;     copy config\Granja.ini.example <pasta_do_exe>\Granja.ini
+; ============================================================================
+
+[Database]
+; Alias definido no tnsnames.ora (recomendado).
+; Alternativa EZConnect (dispensa o tnsnames): Server = localhost:1521/XE
+Server   = GRANJA
+User     = GRANJA
+Password = granja123
+
+[Oracle]
+; Caminho do oci.dll de 32 BITS (Instant Client 11.2). O app deve ser Win32.
+OCIPath  = C:\app\instantClient\oci.dll
+; Pasta network\admin que contem o tnsnames.ora (define a variavel TNS_ADMIN).
+TNSAdmin = C:\app\instantClient\network\admin

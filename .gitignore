@@ -1,0 +1,27 @@
+# ==== Configuracao com segredos (somente os .example vao para o repo) ====
+Granja.ini
+config/Granja.ini
+
+# ==== Documento de avaliacao (nao publicar) ====
+*.pdf
+
+# ==== Saidas de compilacao Delphi ====
+Win32/
+Win64/
+*.exe
+*.dcu
+*.~*
+*.local
+*.identcache
+*.tvsconfig
+*.dsk
+*.stat
+__history/
+__recovery/
+*.res
+
+# Mantem a config exemplo versionada
+!config/Granja.ini.example
+
+# Instant Client vai COMPLETO no repo (anula o *.exe acima so para esta pasta)
+!instantClient/**

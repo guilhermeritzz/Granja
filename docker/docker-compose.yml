@@ -1,0 +1,27 @@
+services:
+  oracle:
+    image: gvenzl/oracle-xe:11-slim
+    container_name: granja-oracle
+    ports:
+      - "1521:1521"
+    environment:
+      # Senha dos usuarios administrativos (SYS / SYSTEM)
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD}
+      # Usuario da aplicacao criado automaticamente pela imagem
+      APP_USER: ${APP_USER}
+      APP_USER_PASSWORD: ${APP_USER_PASSWORD}
+    volumes:
+      # Scripts executados uma unica vez, no primeiro start (apos criar o APP_USER)
+      - ./initdb:/container-entrypoint-initdb.d
+      # Scripts SQL do projeto, lidos pelo 00_run_all.sh
+      - ../db:/opt/granja/db:ro
+      # Persistencia dos dados entre reinicios
+      - granja-oracle-data:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 15s
+      timeout: 10s
+      retries: 30
+
+volumes:
+  granja-oracle-data:

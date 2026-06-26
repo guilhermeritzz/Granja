@@ -1,0 +1,9 @@
+# Scripts executados dentro do container Linux precisam de fim de linha LF.
+*.sh   text eol=lf
+*.sql  text eol=lf
+# Fontes Delphi mantem CRLF (padrao Windows/IDE).
+*.pas  text eol=crlf
+*.dfm  text eol=crlf
+*.dpr  text eol=crlf
+*.dproj text eol=crlf
+instantClient/** filter=lfs diff=lfs merge=lfs -text
